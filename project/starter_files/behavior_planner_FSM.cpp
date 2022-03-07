@@ -164,10 +164,10 @@ State BehaviorPlannerFSM::state_transition(const State& ego_state, State goal,
 
   } else if (_active_maneuver == DECEL_TO_STOP) {
     // LOG(INFO) << "BP- IN DECEL_TO_STOP STATE";
-    // TODO-maintain the same goal when in DECEL_TO_STOP state: Make sure the
+    // maintain the same goal when in DECEL_TO_STOP state: Make sure the
     // new goal is the same as the previous goal (_goal). That way we
     // keep/maintain the goal at the stop line.
-    // goal = ;  // <- Fix This
+    goal = _goal;
 
     // TODO: It turns out that when we teleport, the car is always at speed
     // zero. In this the case, as soon as we enter the DECEL_TO_STOP state,

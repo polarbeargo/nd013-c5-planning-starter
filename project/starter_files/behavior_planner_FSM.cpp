@@ -134,31 +134,31 @@ State BehaviorPlannerFSM::state_transition(const State& ego_state, State goal,
       // LOG(INFO) << "BP- original STOP goal at: " << goal.location.x << ", "
       //          << goal.location.y;
 
-      // TODO-goal behind the stopping point: put the goal behind the stopping
+      // behind the stopping point: put the goal behind the stopping
       // point (i.e the actual goal location) by "_stop_line_buffer". HINTS:
       // remember that we need to go back in the opposite direction of the
       // goal/road, i.e you should use: ang = goal.rotation.yaw + M_PI and then
       // use cosine and sine to get x and y
       //
       auto ang = goal.rotation.yaw + M_PI;
-      goal.location.x += std::cos(ang);  // <- Fix This
-      goal.location.y += std::sin(ang);  // <- Fix This
+      goal.location.x += std::cos(ang);
+      goal.location.y += std::sin(ang);
 
       // LOG(INFO) << "BP- new STOP goal at: " << goal.location.x << ", "
       //          << goal.location.y;
 
-      // TODO-goal speed at stopping point: What should be the goal speed??
-      goal.velocity.x = 0.0;  // <- Fix This
-      goal.velocity.y = 0.0;  // <- Fix This
-      goal.velocity.z = 0.0;  // <- Fix This
+      // speed at stopping point: What should be the goal speed??
+      goal.velocity.x = 0.0;
+      goal.velocity.y = 0.0;
+      goal.velocity.z = 0.0;
 
     } else {
-      // TODO-goal speed in nominal state: What should be the goal speed now
+      // speed in nominal state: What should be the goal speed now
       // that we know we are in nominal state and we can continue freely?
       // Remember that the speed is a vector
       // HINT: _speed_limit * std::sin/cos (goal.rotation.yaw);
-      goal.velocity.x = 1.0;  // <- Fix This
-      goal.velocity.y = 1.0;  // <- Fix This
+      goal.velocity.x = _speed_limit * std::cos(goal.rotation.yaw);
+      goal.velocity.y = _speed_limit * std::sin(goal.rotation.yaw);
       goal.velocity.z = 0;
     }
 

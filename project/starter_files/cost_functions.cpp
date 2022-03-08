@@ -50,11 +50,11 @@ double collision_circles_cost_spiral(const std::vector<PathPoint>& spiral,
     double cur_yaw = wp.theta;  // This is already in rad.
 
     for (size_t c = 0; c < n_circles && !collision; ++c) {
-      // TODO-Circle placement: Where should the circles be at? The code below
+      // Circle placement: Where should the circles be at? The code below
       // is NOT complete. HINT: use CIRCLE_OFFSETS[c], sine and cosine to
       // calculate x and y: cur_y + CIRCLE_OFFSETS[c] * std::sin/cos(cur_yaw)
-      auto circle_center_x = 0;  // <- Update 
-      auto circle_center_y = 0;  // <- Update 
+      auto circle_center_x = cur_x + CIRCLE_OFFSETS[c] * std::cos(cur_yaw);
+      auto circle_center_y = cur_y + CIRCLE_OFFSETS[c] * std::sin(cur_yaw);  
 
       for (auto obst : obstacles) {
         if (collision) {

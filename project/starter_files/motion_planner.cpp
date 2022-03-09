@@ -86,13 +86,13 @@ std::vector<State> MotionPlanner::generate_offset_goals(
   // (goal_state.rotation.yaw)
   auto yaw = goal_state.rotation.yaw + M_PI / 2
 
-  // LOG(INFO) << "MAIN GOAL";
-  // LOG(INFO) << "x: " << goal_state.location.x << " y: " <<
-  // goal_state.location.y
-  //          << " z: " << goal_state.location.z
-  //          << " yaw (rad): " << goal_state.rotation.yaw;
-  // LOG(INFO) << "OFFSET GOALS";
-  // LOG(INFO) << "ALL offset yaw (rad): " << yaw;
+                                           LOG(INFO)
+             << "MAIN GOAL";
+  LOG(INFO) << "x: " << goal_state.location.x << " y: " << goal_state.location.y
+            << " z: " << goal_state.location.z
+            << " yaw (rad): " << goal_state.rotation.yaw;
+  LOG(INFO) << "OFFSET GOALS";
+  LOG(INFO) << "ALL offset yaw (rad): " << yaw;
 
   for (int i = 0; i < _num_paths; ++i) {
     auto goal_offset = goal_state;

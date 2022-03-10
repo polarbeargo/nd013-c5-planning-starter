@@ -380,18 +380,17 @@ double VelocityProfileGenerator::calc_final_speed(const double& v_i,
                                                   const double& a,
                                                   const double& d) const {
   double v_f{0.0};
-  // TODO-calc final speed: Calculate the final distance. HINT: look at the
+  // calc final speed: Calculate the final distance. HINT: look at the
   // description of this function. Make sure you handle negative discriminant
   // and make v_f = 0 in that case. If the discriminant is inf or nan return
   // infinity
 
-  double disc = 0;  // <- Fix this
-  if (disc <= 0.0) {
-    v_f = 0.0;
-  } else if (disc == std::numeric_limits<double>::infinity() ||
-             std::isnan(disc)) {
+  double disc = 2.0 * a * d + std::pow(v_i, 2) if (disc <= 0.0) { v_f = 0.0; }
+  else if (disc == std::numeric_limits<double>::infinity() ||
+           std::isnan(disc)) {
     v_f = std::numeric_limits<double>::infinity();
-  } else {
+  }
+  else {
     v_f = std::sqrt(disc);
   }
   //   std::cout << "v_i, a, d: " << v_i << ", " << a << ", " << d

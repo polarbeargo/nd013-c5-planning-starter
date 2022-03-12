@@ -1,4 +1,4 @@
-# Project Motion Planning and Decision Making for Autonomous Vehicles  
+### Project: Motion Planning and Decision Making for Autonomous Vehicles  
 [![Udacity - Self-Driving Car NanoDegree](https://s3.amazonaws.com/udacity-sdc/github/shield-carnd.svg)](http://www.udacity.com/drive)  
 
 This repository contains the starter code to launch in the SDC Planning course workspace. 
@@ -15,7 +15,7 @@ To be able to:
 
 Using the CARLA simulator to verify our result.  
 
-# Result:  
+### Result:  
 
 
 

@@ -79,8 +79,7 @@ double BehaviorPlannerFSM::get_look_ahead_distance(const State& ego_state) {
   // the distance you will need to come to a stop while traveling at speed V and
   // using a comfortable deceleration.
   VelocityProfileGenerator vp;
-  auto look_ahead_distance =
-      vp.calc_distance(velocity_mag, 0, -_max_accel);
+  auto look_ahead_distance = vp.calc_distance(velocity_mag, 0, -_max_accel);
 
   // LOG(INFO) << "Calculated look_ahead_distance: " << look_ahead_distance;
 
@@ -142,8 +141,8 @@ State BehaviorPlannerFSM::state_transition(const State& ego_state, State goal,
       // use cosine and sine to get x and y
       //
       auto ang = goal.rotation.yaw + M_PI;
-      goal.location.x += std::cos(ang);
-      goal.location.y += std::sin(ang);
+      goal.location.x += _stop_line_buffer * std::cos(ang);
+      goal.location.y += _stop_line_buffer * std::sin(ang);
 
       // LOG(INFO) << "BP- new STOP goal at: " << goal.location.x << ", "
       //          << goal.location.y;
